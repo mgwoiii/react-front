@@ -1,10 +1,17 @@
-import React, { useState, useRef , useCallback} from 'react';
+import React, { useState, useRef , useCallback, useEffect} from 'react';
 import './App.css';
 import TodoTempleate from './components/TodoTemplate';
 import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
-
+import axios from 'axios';
 const App = () => {
+  
+  useEffect(() => {
+      console.log('useEffect on mounting');
+      axios.get('/dataTest')
+        .then(response => console.log(response.data))
+        .catch(error => console.log(error))
+  },[]);
 
   const [todos, setTodos] = useState([
     {
