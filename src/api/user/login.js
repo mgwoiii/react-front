@@ -1,9 +1,12 @@
 import axios from 'axios';
 
-let urlPath = '/api/user/';
+let urlPath = '/api/login/';
 
 export default {
-  get() {
-        return axios.get(urlPath + 'login');
-    },
-}
+  test() {
+    return axios.get(urlPath + 'test');
+  },
+  join(params) {
+    return axios.post(urlPath + 'join', params);
+  },
+};

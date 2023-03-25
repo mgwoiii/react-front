@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import login from 'api/user/login';
 import { Link, useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Join = () => {
   const [inputId, setInputId] = useState('');
   const [inputPw, setInputPw] = useState('');
+  const [inputEmail, setInputEmail] = useState('');
   let navigate = useNavigate();
 
   // input data의 변화가 있을 때마다 value 값을 변경해서 useState 한다.
@@ -16,13 +17,27 @@ const Login = () => {
     setInputPw(e.target.value);
   };
 
-  // login 버튼 클릭 이벤트
-  const onClickLogin = () => {
+  const handleInputEmail = (e) => {
+    setInputEmail(e.target.value);
+  };
+
+  // 회원가입 클릭 이벤트
+  const onClickMember = () => {
     console.log('click login');
+
+    const params = {
+      username: inputId,
+      password: inputPw,
+      email: inputEmail,
+    };
+    console.log(params);
+    login.join(params).then((res) => {
+      console.log(res);
+    });
   };
   // 회원가입 이동 클릭 이벤트
-  const onClickJoin = () => {
-    navigate('/join');
+  const onClickBack = () => {
+    navigate('/login');
   };
 
   // 페이지 렌더링 후 가장 처음 호출되는 함수
@@ -40,7 +55,7 @@ const Login = () => {
   );
   return (
     <div>
-      <h2>Login</h2>
+      <h2>Join</h2>
       <div>
         <label htmlFor="input_id">ID : </label>
         <input
@@ -60,10 +75,19 @@ const Login = () => {
         />
       </div>
       <div>
-        <button type="button" onClick={onClickLogin}>
-          Login
+        <label htmlFor="input_email">EMAIL : </label>
+        <input
+          type="text"
+          name="input_email"
+          value={inputEmail}
+          onChange={handleInputEmail}
+        />
+      </div>
+      <div>
+        <button type="button" onClick={onClickBack}>
+          취소
         </button>
-        <button type="button" onClick={onClickJoin}>
+        <button type="button" onClick={onClickMember}>
           회원가입
         </button>
       </div>
@@ -71,4 +95,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Join;
