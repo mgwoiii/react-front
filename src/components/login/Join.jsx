@@ -26,8 +26,8 @@ const Join = () => {
     console.log('click login');
 
     const params = {
-      username: inputId,
-      password: inputPw,
+      loginId: inputId,
+      loginPassword: inputPw,
       email: inputEmail,
     };
     console.log(params);
