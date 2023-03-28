@@ -9,4 +9,8 @@ export default {
   join(params) {
     return axios.post(urlPath + 'join', params);
   },
+  login(params) {
+    console.log(params);
+    return axios.post(urlPath + 'check', params);
+  },
 };

@@ -18,7 +18,17 @@ const Login = () => {
 
   // login 버튼 클릭 이벤트
   const onClickLogin = () => {
-    console.log('click login');
+    const params = {
+      loginId: inputId,
+      loginPassword: inputPw,
+    };
+
+    login
+      .login(params)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch();
   };
   // 회원가입 이동 클릭 이벤트
   const onClickJoin = () => {
@@ -27,14 +37,7 @@ const Login = () => {
 
   // 페이지 렌더링 후 가장 처음 호출되는 함수
   useEffect(
-    () => {
-      login
-        .test()
-        .then((res) => {
-          console.log(res);
-        })
-        .catch();
-    },
+    () => {},
     // 페이지 호출 후 처음 한번만 호출될 수 있도록 [] 추가
     []
   );

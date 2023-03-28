@@ -30,7 +30,6 @@ const Join = () => {
       loginPassword: inputPw,
       email: inputEmail,
     };
-    console.log(params);
     login.join(params).then((res) => {
       console.log(res);
     });
