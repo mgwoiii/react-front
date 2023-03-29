@@ -23,8 +23,6 @@ const Join = () => {
 
   // 회원가입 클릭 이벤트
   const onClickMember = () => {
-    console.log('click login');
-
     const params = {
       loginId: inputId,
       loginPassword: inputPw,
