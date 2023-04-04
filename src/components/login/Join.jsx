@@ -28,9 +28,17 @@ const Join = () => {
       loginPassword: inputPw,
       email: inputEmail,
     };
-    login.join(params).then((res) => {
-      console.log(res);
-    });
+    login
+      .join(params)
+      .then((res) => {
+        if (res.data.status == 8002) {
+          alert(res.data.message);
+          return false;
+        }
+      })
+      .catch((err) => {
+        alert(err);
+      });
   };
   // 회원가입 이동 클릭 이벤트
   const onClickBack = () => {
@@ -40,12 +48,15 @@ const Join = () => {
   // 페이지 렌더링 후 가장 처음 호출되는 함수
   useEffect(
     () => {
-      login
-        .test()
-        .then((res) => {
-          console.log(res);
-        })
-        .catch();
+      // login
+      //   .test()
+      //   .then((res) => {
+      //     console.log(res);
+      //   })
+      //   .catch((err) => {
+      //     let res = err.response;
+      //     console.log(res);
+      //   });
     },
     // 페이지 호출 후 처음 한번만 호출될 수 있도록 [] 추가
     []

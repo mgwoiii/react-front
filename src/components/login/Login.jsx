@@ -47,6 +47,17 @@ const Login = () => {
         console.log(err);
       });
   };
+  // Session 버튼 클릭 이벤트
+  const onClickCheckSession = () => {
+    login
+      .test()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   // 회원가입 이동 클릭 이벤트
   const onClickJoin = () => {
     navigate('/join');
@@ -85,6 +96,9 @@ const Login = () => {
         </button>
         <button type="button" onClick={onClickLogOut}>
           LogOut
+        </button>
+        <button type="button" onClick={onClickCheckSession}>
+          sessionTest
         </button>
         <button type="button" onClick={onClickJoin}>
           회원가입
