@@ -18,17 +18,34 @@ const Login = () => {
 
   // login 버튼 클릭 이벤트
   const onClickLogin = () => {
-    const params = {
-      loginId: inputId,
-      loginPassword: inputPw,
+    const config = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
     };
+    const params = new URLSearchParams();
+    params.append('loginId', inputId);
+    params.append('loginPassword', inputPw);
 
     login
-      .login(params)
+      .login(params, config)
       .then((res) => {
         console.log(res);
       })
-      .catch();
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  // logout 버튼 클릭 이벤트
+  const onClickLogOut = () => {
+    login
+      .logOut()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   // 회원가입 이동 클릭 이벤트
   const onClickJoin = () => {
@@ -65,6 +82,9 @@ const Login = () => {
       <div>
         <button type="button" onClick={onClickLogin}>
           Login
+        </button>
+        <button type="button" onClick={onClickLogOut}>
+          LogOut
         </button>
         <button type="button" onClick={onClickJoin}>
           회원가입
