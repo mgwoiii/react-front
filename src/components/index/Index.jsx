@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Index = () => {
@@ -9,6 +9,9 @@ const Index = () => {
       </div>
       <div>
         <Link to="/file"> 파일업로드 </Link>
+      </div>
+      <div>
+        <Link to="/todoTempleate"> todoList </Link>
       </div>
     </div>
   );

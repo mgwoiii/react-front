@@ -30,7 +30,17 @@ const Login = () => {
     login
       .login(params, config)
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
+
+        if (res.data.status == 200) {
+          alert(res.data.message);
+
+          sessionStorage.clear();
+          sessionStorage.setItem('id', res.data.getId);
+          sessionStorage.setItem('loginId', res.data.getLoginId);
+
+          navigate('/');
+        }
       })
       .catch((err) => {
         console.log(err);
